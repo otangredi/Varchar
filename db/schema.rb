@@ -27,11 +27,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_14_221619) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-=======
-ActiveRecord::Schema[7.0].define(version: 2022_11_14_221320) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "description"
