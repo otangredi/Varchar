@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   delete '/bookings/:id', to: "bookings#destroy", as: :delete_booking
   get '/my-bookings', to: "bookings#my_bookings"
   get '/my-characters', to: "characters#my_characters"
+  get '/host-bookings/:id', to: "bookings#host_booking"
+  patch '/host-bookings/:id/set-status', to: "bookings#set_status"
+  get '/host-bookings', to: "bookings#host_bookings"
   get '/my-characters/:id', to: "characters#destroy", as: :delete_character
 end

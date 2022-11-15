@@ -33,6 +33,8 @@ class BookingsController < ApplicationController
   end
 
   def host_bookings
+    raise
+    @bookings = Booking.where(character: current_user)
   end
 
   def host_booking
