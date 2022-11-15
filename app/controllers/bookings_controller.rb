@@ -4,14 +4,43 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = Booking.new(params_booking)
+    @booking.character = Character.find(params[:character_id])
+    @booking.user = current_user
+
+    if @booking.save
+      redirect_to character_path(@booking.character)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def save
   end
 
   def edit
   end
 
-  def update
+  def set_status
   end
 
   def destroy
+  end
+
+  def my_bookings
+    @bookings = Booking.all
+
+  end
+
+  def host_bookings
+  end
+
+  def host_booking
+  end
+
+  private
+
+  def params_booking
+    params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :character_id)
   end
 end
