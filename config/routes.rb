@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   get '/bookings/:id', to: "bookings#show", as: :booking
   get '/my-bookings', to: "bookings#my_bookings"
+  get '/my-characters', to: "characters#my_characters"
 end

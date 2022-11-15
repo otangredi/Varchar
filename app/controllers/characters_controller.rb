@@ -9,6 +9,10 @@ class CharactersController < ApplicationController
     @booking = Booking.new
   end
 
+  def my_characters
+    @characters = Character.where(user: current_user)
+  end
+
   private
 
   def set_character
