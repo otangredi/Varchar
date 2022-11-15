@@ -1,7 +1,11 @@
-<h1>Characters#show</h1>
+<h1><%= @character.name %></h1>
+<p>Description: <%= @character.description %></p>
+<p>Price: $<%= @character.price %></p>
+<p>Category: <%= @character.category %></p>
 
 <%= simple_form_for([@character, @booking]) do |f| %>
 <%= f.input :start_date %>
 <%= f.input :end_date %>
 <%= f.submit %>
 <% end %>
+
