@@ -1,4 +1,13 @@
 <h1>My Bookings</h1>
-<% @bookings.each do |booking| %>
-<%= booking %>
-<% end %>
+
+<div class="container">
+  <% @bookings.each do |booking| %>
+    <div class="card-product">
+      <img src="">
+      <div class="card-product-infos">
+        <h2><%= link_to booking.character.name, booking_path(booking) %> (<%= booking.start_date %>-<%= booking.end_date %>)</h2>
+        <p>This booking is <strong><%= booking.status %></strong></p>
+      </div>
+    </div>
+  <% end %>
+</div>
