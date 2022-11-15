@@ -1,0 +1,9 @@
+<h1>Your booking details</h1>
+
+<h3>Date</h3>
+<p><%= @booking.start_date %> - <%= @booking.end_date %></p>
+<h3>Total Price</h3>
+<p>1 day = <%= @booking.character.price %></p>
+<p>$ <%= (@booking.end_date - @booking.start_date)/1 %></p>
+
+<%= link_to "Request", my_bookings_path %>

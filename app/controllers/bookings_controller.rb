@@ -8,17 +8,19 @@ class BookingsController < ApplicationController
     @booking.character = Character.find(params[:character_id])
     @booking.user = current_user
 
-    if @booking.save
-      redirect_to character_path(@booking.character)
+    if @booking.save!
+      redirect_to booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def save
+  def show
+    @booking = Booking.find(params[:id])
   end
 
   def edit
+
   end
 
   def set_status
@@ -28,8 +30,7 @@ class BookingsController < ApplicationController
   end
 
   def my_bookings
-    @bookings = Booking.all
-
+    @bookings = Booking.where(user: current_user)
   end
 
   def host_bookings

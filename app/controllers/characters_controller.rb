@@ -9,8 +9,6 @@ class CharactersController < ApplicationController
     @booking = Booking.new
   end
 
-
-
   private
 
   def set_character
