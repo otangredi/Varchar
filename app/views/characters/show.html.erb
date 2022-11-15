@@ -3,8 +3,10 @@
 <p>Price: $<%= @character.price %></p>
 <p>Category: <%= @character.category %></p>
 
+<% unless @character.user == current_user %>
 <%= simple_form_for([@character, @booking]) do |f| %>
 <%= f.input :start_date %>
 <%= f.input :end_date %>
 <%= f.submit %>
+<% end %>
 <% end %>
