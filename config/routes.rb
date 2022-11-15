@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  resources :characters do
+  resources :characters, except: [:destroy] do
     resources :bookings, except: [:index, :show, :destroy]
   end
   get '/bookings/:id', to: "bookings#show", as: :booking
@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   get '/host-bookings/:id', to: "bookings#host_booking"
   patch '/host-bookings/:id/set-status', to: "bookings#set_status"
   get '/host-bookings', to: "bookings#host_bookings"
+  get '/my-characters/:id', to: "characters#destroy", as: :delete_character
 end
