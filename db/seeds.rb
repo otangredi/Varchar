@@ -13,7 +13,7 @@ User.create!(email: "a@a.a", password: "aaaaaaaa")
 end
 
 5.times do
-  booking = Booking.create!(
+  Booking.create!(
     start_date: Faker::Date.forward(days: 23),
     end_date: Faker::Date.backward(days: 14),
     status: ["Pending", "Completed", "Denied"].sample,

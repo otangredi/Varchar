@@ -6,6 +6,7 @@ class CharactersController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
 
