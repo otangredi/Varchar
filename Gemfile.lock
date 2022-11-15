@@ -1,10 +1,4 @@
 GIT
-  remote: https://github.com/faker-ruby/faker.git
-  revision: 97af5a0f093138e717819e0df998ddd0cdb95d28
-  branch: main
-  specs:
-
-GIT
   remote: https://github.com/heartcombo/simple_form.git
   revision: 31fe25504771bd6cd425b585a4e0ed652fba4521
   specs:
@@ -265,7 +259,7 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
-  faker!
+  faker
   font-awesome-sass (~> 6.1)
   jbuilder
   jsbundling-rails
