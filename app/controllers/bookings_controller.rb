@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
   end
 
   def edit
-
   end
 
   def set_status
