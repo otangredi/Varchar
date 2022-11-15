@@ -1,23 +1,13 @@
 require "test_helper"
 
 class CharactersControllerTest < ActionDispatch::IntegrationTest
-  test "should get name" do
-    get characters_name_url
+  test "should get index" do
+    get characters_index_url
     assert_response :success
   end
 
-  test "should get description" do
-    get characters_description_url
-    assert_response :success
-  end
-
-  test "should get price:integer" do
-    get characters_price:integer_url
-    assert_response :success
-  end
-
-  test "should get category" do
-    get characters_category_url
+  test "should get show" do
+    get characters_show_url
     assert_response :success
   end
 end
