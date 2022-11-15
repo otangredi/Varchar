@@ -10,10 +10,10 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "All Characters", "/characters", class: "nav-link" %>
           </li>
+        <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "My Bookings", "/my-bookings", class: "nav-link" %>
           </li>
