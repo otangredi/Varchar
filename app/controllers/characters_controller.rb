@@ -24,6 +24,10 @@ class CharactersController < ApplicationController
     end
   end
 
+  def destroy
+
+  end
+
   def my_characters
     @characters = Character.where(user: current_user)
   end

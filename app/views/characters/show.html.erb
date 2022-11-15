@@ -10,3 +10,7 @@
 <%= f.submit %>
 <% end %>
 <% end %>
+
+<% if @character.user == current_user %>
+<%= link_to 'Delete', delete_character_path(@character) %>
+<% end %>
