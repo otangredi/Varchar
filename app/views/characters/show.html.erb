@@ -4,13 +4,17 @@
 <p>Category: <%= @character.category %></p>
 
 <% unless @character.user == current_user %>
-<%= simple_form_for([@character, @booking]) do |f| %>
-<%= f.input :start_date %>
-<%= f.input :end_date %>
-<%= f.submit %>
-<% end %>
+  <%= simple_form_for([@character, @booking]) do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit %>
+  <% end %>
 <% end %>
 
 <% if @character.user == current_user %>
-<%= link_to 'Delete', delete_character_path(@character) %>
+  <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+<% end %>
+
+<% if @character.user == current_user %>
+  <%= link_to 'Edit', edit_character_path(@character) %>
 <% end %>
