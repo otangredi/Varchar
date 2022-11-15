@@ -1,0 +1,10 @@
+<h1>Characters</h1>
+
+
+<div class="cards">
+  <% @characters.each do |character| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+      <%= link_to character.name, character_path(character) %>
+    </div>
+  <% end %>
+</div>
