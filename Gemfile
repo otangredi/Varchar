@@ -29,7 +29,6 @@ gem "jbuilder"
 
 # CUSTOM
 gem "devise"
-
 gem 'faker'
 
 # Use Redis adapter to run Action Cable in production
