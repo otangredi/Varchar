@@ -33,8 +33,9 @@ class BookingsController < ApplicationController
   end
 
   def host_bookings
+    @host_characters = Character.where(user: current_user)
+    @bookings = Booking.joins(:character).where(user_id: current_user)
     raise
-    @bookings = Booking.where(character: current_user)
   end
 
   def host_booking
@@ -44,5 +45,9 @@ class BookingsController < ApplicationController
 
   def params_booking
     params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :character_id)
+  end
+
+  def find_host_character
+    @host_characters = Character.where(user: current_user)
   end
 end
