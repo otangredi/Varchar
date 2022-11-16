@@ -1,8 +1,8 @@
-<h1>My bookings</h1>
+<h1>Manage Bookings</h1>
 <div class="container">
   <% @host_bookings.each do |booking| %>
     <div class="card-product">
-      <img src="">
+      <img src="<%= cl_image_path booking.photos.all.first.nil? ? '' : booking.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
       <div class="card-product-infos">
         <h2><%= booking.name %></h2>
         <p>Description <%= booking.description %> Price <%= booking.price %>$</p>
