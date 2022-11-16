@@ -1,16 +1,12 @@
-
-
-
-    <% @characters.each do |character| %>
+<% @characters.each do |character| %>
   <div class="card-trip">
-      <img src="<%= cl_image_path character.photos.all.first.nil? ? 'https://res.cloudinary.com/dzoannx40/image/upload/v1668617258/8d23453a-8ebb-48b9-a124-19127bfe6adc.__CR0_0_300_300_PT0_SX300_V1____rewimr.jpg' : character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
+      <img src="<%= cl_image_path character.photos.all.first.nil? ? '' : character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
         <div class="card-trip-infos">
           <div>
             <h2><%= character.name %></h2>
             <p><%= character.name %></p>
           </div>
-          <h2 class="card-trip-pricing">£99.99</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <h2 class="card-trip-pricing"><%= character.price %></h2>
         </div>
-    <% end %>
   </div>
+<% end %>
