@@ -2,10 +2,9 @@
 
 <div class="cards">
   <% @characters.each do |character| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path character.photos.all.first.nil? ? 'https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg' : character.photos.all.first.key, height: 300, width: 400, crop: :fill %>')">
       <%= link_to character.name, character_path(character) %>
     </div>
   <% end %>
+  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3))"><%= link_to '+', new_character_path %></div>
 </div>
-
-<%= link_to 'Add a new Character', new_character_path %>
