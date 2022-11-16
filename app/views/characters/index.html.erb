@@ -1,12 +1,13 @@
+
 <% @characters.each do |character| %>
   <div class="card-trip">
       <img src="<%= cl_image_path character.photos.all.first.nil? ? '' : character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
         <div class="card-trip-infos">
           <div>
-            <h2><%= character.name %></h2>
-            <p><%= character.name %></p>
+            <h2><%= link_to character.name, character_path(character) %></h2>
+            <p><%= character.description %></p>
           </div>
-          <h2 class="card-trip-pricing"><%= character.price %></h2>
+          <h2 class="card-trip-pricing">$ <%= character.price %></h2>
         </div>
   </div>
 <% end %>

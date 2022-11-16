@@ -1,4 +1,31 @@
 // Specific CSS for your home-page
 #home-page-banner {
-  width: 50%;
+  width: 40%;
+}
+
+.margin-bottom-push-down {
+  margin-bottom: 80px;
+}
+
+.container {
+  width: 900px;
+}
+
+.banner-text {
+  font-size: 60px;
+  position:absolute;
+  top: 259px;
+  left: 430px;
+}
+
+.marker {
+  position:absolute;
+  top: 259px;
+  left: 430px;
+}
+
+.banner-image {
+  position:absolute;
+  top: 110px;
+  left: 70px;
 }
