@@ -1,0 +1,15 @@
+<h1>My bookings</h1>
+<div class="container">
+  <% @host_bookings.each do |booking| %>
+    <div class="card-product">
+      <img src="">
+      <div class="card-product-infos">
+        <h2><%= booking.name %></h2>
+        <p>Description <%= booking.description %> Price <%= booking.price %>$</p>
+        <p>This booking date <strong><%= booking.bookings[0].start_date %> to <%= booking.bookings[0].end_date %></strong></p>
+        <p>This booking is <strong><%= booking.bookings[0].status %></strong></p>
+        <p>Booked by <strong><%= User.find_by(id: booking.bookings[0].user_id).email %></strong></p>
+      </div>
+    </div>
+  <% end %>
+</div>

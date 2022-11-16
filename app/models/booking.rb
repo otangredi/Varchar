@@ -7,5 +7,5 @@ class Booking < ApplicationRecord
     pending: 0,
     active: 1,
     archived: 2
-}, _prefix: true
+  }, _prefix: true
 end
