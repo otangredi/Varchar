@@ -6,8 +6,4 @@
 <p>1 day = <%= @booking.character.price %></p>
 <p>$ <%= (@booking.end_date - @booking.start_date) * @booking.character.price %> </p>
 
-<% if @booking.status == nil %>
 <%= link_to "Request", my_bookings_path %>
-<% elsif @booking.status_pending? %>
-<%= link_to "Cancel", delete_booking_path(@booking) %>
-<% end %>

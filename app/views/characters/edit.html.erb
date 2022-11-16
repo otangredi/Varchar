@@ -1,0 +1,10 @@
+<h1>Edit Character</h1>
+
+<%= simple_form_for([@character]) do |f| %>
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :price %>
+<%= f.input :category %>
+<%= f.input :photos, as: :file, input_html: { multiple: true } %>
+<%= f.submit %>
+<% end %>

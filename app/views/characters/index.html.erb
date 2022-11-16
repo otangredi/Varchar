@@ -1,9 +1,12 @@
-<h1>Characters</h1>
-
-<div class="cards">
-  <% @characters.each do |character| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
-      <%= link_to character.name, character_path(character) %>
-    </div>
-  <% end %>
-</div>
+<% @characters.each do |character| %>
+  <div class="card-trip">
+      <img src="<%= cl_image_path character.photos.all.first.nil? ? '' : character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= character.name %></h2>
+            <p><%= character.name %></p>
+          </div>
+          <h2 class="card-trip-pricing"><%= character.price %></h2>
+        </div>
+  </div>
+<% end %>

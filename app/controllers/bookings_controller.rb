@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: %i[show edit destroy]
+
   def new
     @booking = Booking.new
   end
@@ -16,7 +18,6 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find(params[:id])
   end
 
   def edit
@@ -26,6 +27,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking.destroy
+    redirect_to my_bookings_path, status: :see_other
   end
 
   def my_bookings
@@ -62,7 +65,15 @@ class BookingsController < ApplicationController
 
   private
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def params_booking
     params.require(:booking).permit(:start_date, :end_date, :status, :user_id, :character_id)
+  end
+
+  def find_host_character
+    @host_characters = Character.where(user: current_user)
   end
 end

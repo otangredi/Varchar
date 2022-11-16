@@ -1,5 +1,5 @@
 class CharactersController < ApplicationController
-  before_action :set_character, only: %i[show]
+  before_action :set_character, only: %i[show edit update destroy]
 
   def index
     @characters = Character.all
@@ -24,8 +24,17 @@ class CharactersController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
+  end
 
+  def update
+    @character.update(character_params)
+    redirect_to character_path(@character)
+  end
+
+  def destroy
+    @character.destroy
+    redirect_to my_characters_path, status: :see_other
   end
 
   def my_characters
@@ -39,6 +48,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:name, :description, :price, :category, :user_id)
+    params.require(:character).permit(:name, :description, :price, :category, :user_id, photos: [])
   end
 end
