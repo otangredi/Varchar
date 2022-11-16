@@ -15,10 +15,14 @@
   <% end %>
 <% end %>
 
-<% if @character.user == current_user %>
-  <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
-<% end %>
+<div>
+  <% if @character.user == current_user %>
+    <%= link_to 'Edit', edit_character_path(@character) %>
+  <% end %>
+</div>
 
-<% if @character.user == current_user %>
-  <%= link_to 'Edit', edit_character_path(@character) %>
-<% end %>
+<div>
+  <% if @character.user == current_user %>
+    <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+  <% end %>
+</div>
