@@ -1,40 +1,45 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<nav class="navbar bg-white fixed-top">
   <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "4u.png" %>
     <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <%# <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5> %>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item active">
             <%= link_to "All Characters", "/characters", class: "nav-link" %>
           </li>
         <% if user_signed_in? %>
           <li class="nav-item active">
+            <%= link_to "My Characters", "/my-characters", class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
             <%= link_to "My Bookings", "/my-bookings", class: "nav-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "My Characters", "/my-characters", class: "nav-link" %>
+            <%= link_to "Manage bookings", "/host-bookings", class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Account", "#", class: "dropdown-item" %>
-              <%= link_to "My host bookings", "/host-bookings", class: "nav-link" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="nav-item active">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
           </li>
         <% else %>
-          <li class="nav-item">
+          <li class="nav-item active">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
+        </ul>
         <% end %>
-      </ul>
+        <%# <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form> %>
+      </div>
     </div>
   </div>
-</div>
+</nav>
