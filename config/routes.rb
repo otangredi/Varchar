@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/my-characters', to: "characters#my_characters"
   delete '/my-characters/:id', to: "characters#destroy", as: :delete_character
   get '/host-bookings/:id', to: "bookings#host_booking"
-  patch '/host-bookings/:id/set-status', to: "bookings#set_status"
+  patch '/host-bookings/:id/:status/set-status', to: "bookings#set_status", as: :edit_status
   get '/host-bookings', to: "bookings#host_bookings"
   get 'bookings/:id/edit', to: "bookings#edit", as: :edit_booking
 end
