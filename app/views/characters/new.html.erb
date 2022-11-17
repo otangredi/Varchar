@@ -4,7 +4,8 @@
 <%= f.input :name %>
 <%= f.input :description %>
 <%= f.input :price %>
-<%= f.input :category %>
+<%= f.input :category, collection: [ "horreur", "humor", "animals",
+  "christmas", "superheroes", "manga", "video-games", "princess", "other"] %>
 <%= f.input :address %>
 <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 <%= f.submit %>
