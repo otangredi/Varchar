@@ -10,7 +10,8 @@ class CharactersController < ApplicationController
         info_window: render_to_string(partial: 'info_window', locals: { character: character }),
         image_url: helpers.asset_url("marker.png")
       }
-      
+    end
+
     if params[:query].nil?
       @characters = Character.all
     else

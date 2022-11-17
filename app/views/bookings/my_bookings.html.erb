@@ -1,13 +1,15 @@
-<h1>My Bookings</h1>
+<div class="container">
+  <h1>My Bookings</h1>
 
-<div class="cards">
-  <% @bookings.each do |booking| %>
-    <div class="card-product">
-      <img src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
-      <div class="card-product-infos">
-        <h2><%= link_to booking.character.name, edit_booking_path(booking) %> (<%= booking.start_date %>-<%= booking.end_date %>)</h2>
-        <p>This booking is <strong><%= booking.status %></strong></p>
+  <div class="cards">
+    <% @bookings.each do |booking| %>
+      <div class="card-product">
+        <img src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top img-fluid" alt="...">
+        <div class="card-product-infos">
+          <h2><%= link_to booking.character.name, edit_booking_path(booking) %> (<%= booking.start_date %>-<%= booking.end_date %>)</h2>
+          <p>This booking is <strong><%= booking.status %></strong></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

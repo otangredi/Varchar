@@ -1,29 +1,33 @@
-<% @character.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
-
-<h1><%= @character.name %></h1>
-<p>Description: <%= @character.description %></p>
-<p>Price: $<%= @character.price %></p>
-<p>Category: <%= @character.category %></p>
-<p>Location: <%= @character.address %></p>
-
-<% unless @character.user == current_user %>
-  <%= simple_form_for([@character, @booking]) do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
+<div class="container">
+  <div class="text-center d-flex">
+  <% @character.photos.each do |photo| %>
+    <%= cl_image_tag photo.key, class: "img-fluid rounded d-block", size: "16x10" %>
   <% end %>
-<% end %>
+  </div>
 
-<div>
-  <% if @character.user == current_user %>
-    <%= link_to 'Edit', edit_character_path(@character) %>
-  <% end %>
-</div>
+  <h1><%= @character.name %></h1>
+  <p>Description: <%= @character.description %></p>
+  <p>Price: $<%= @character.price %></p>
+  <p>Category: <%= @character.category %></p>
+  <p>Location: <%= @character.address %></p>
 
-<div>
-  <% if @character.user == current_user %>
-    <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+  <% unless @character.user == current_user %>
+    <%= simple_form_for([@character, @booking]) do |f| %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.submit %>
+    <% end %>
   <% end %>
+
+  <div>
+    <% if @character.user == current_user %>
+      <%= link_to 'Edit', edit_character_path(@character) %>
+    <% end %>
+  </div>
+
+  <div>
+    <% if @character.user == current_user %>
+      <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+    <% end %>
+  </div>
 </div>
