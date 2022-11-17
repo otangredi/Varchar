@@ -40,7 +40,6 @@
         <input type="submit" class="btn btn-primary w-100" value="Book now">
       </form>
     </div>
-  </div>
 </div>
 
 <div class="container bg-gray">
@@ -70,5 +69,11 @@
     <% if @character.user == current_user %>
       <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
     <% end %>
+  </div>
+
+  <div style="width: 75%; height: 600px;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

@@ -5,7 +5,9 @@ class Character < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :price, :description, :category, :address, presence: true
   geocoded_by :address
+  validates :category, presence: true, inclusion: { in: %w[Animation Animal Christmas Comedy Game Horror Superhero Princess Other] }
   after_validation :geocode, if: :will_save_change_to_address?
+
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
     against: [ :name, :description ],

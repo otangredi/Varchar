@@ -1,14 +1,12 @@
 <div class="container">
-  <div class="">
-    <%= form_with url: characters_path, method: :get, class: "d-flex my-1 search" do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a character"
-      %>
-      <%= submit_tag "Search", class: "btn btn-warning" %>
-    <% end %>
-  </div>
+  <%= form_with url: characters_path, method: :get, class: "d-flex my-1 search" do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a character"
+    %>
+    <%= submit_tag "Search", class: "btn btn-warning" %>
+  <% end %>
 
   <div class="cards">
     <% @characters.each do |character| %>
@@ -35,5 +33,4 @@
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
-
 </div>
