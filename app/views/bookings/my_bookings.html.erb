@@ -1,6 +1,6 @@
 <h1>My Bookings</h1>
 
-<div class="container">
+<div class="cards">
   <% @bookings.each do |booking| %>
     <div class="card-product">
       <img src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
