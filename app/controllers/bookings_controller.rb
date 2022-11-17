@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
     @booking.character = Character.find(params[:character_id])
     @booking.user = current_user
     @booking.status = 0
-
     if @booking.save!
       redirect_to booking_path(@booking)
     else
