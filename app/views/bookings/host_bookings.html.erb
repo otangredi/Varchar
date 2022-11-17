@@ -5,12 +5,12 @@
       <img src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
       <div class="card-product-infos">
         <h2><%= booking.character.name %></h2>
-        <p>Description <%= booking.character.description %> Price <%= booking.character.price %>$</p>
-        <p>This booking date <strong><%= booking.start_date %> to <%= booking.end_date %></strong></p>
+        <p>Total $<%= booking.character.price %></p>
+        <p><%= booking.start_date %> to <%= booking.end_date %></p>
         <div class="status">
-          <p>Booking status: <%= booking.status %></p>
-          <p><%= link_to "Validate" , edit_status_path(booking, 1), data: { 'turbo-method': :patch }%></p>
-          <p><%= link_to "Canceled" , edit_status_path(booking, 2), data: { 'turbo-method': :patch }%></p>
+          <p>Status: <%= booking.status %></p>
+          <p><%= link_to "Confirm", edit_status_path(booking, 1), data: { 'turbo-method': :patch }%></p>
+          <p><%= link_to "Deny", edit_status_path(booking, 2), data: { 'turbo-method': :patch }%></p>
         </div>
         <p>Booked by <strong><%= booking.user.email %></strong></p>
       </div>
