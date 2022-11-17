@@ -22,7 +22,7 @@
       <h1><%= @character.name %></h1><p>[<%= @character.category %>]</p>
       <p><%= @character.description %></p>
       <p><strong>$<%= @character.price %></strong> / day</p>
-      <p>Address: <%= @character.address %></p>
+      <p>📍 <%= @character.address %></p>
     </div>
 
   <% unless @character.user == current_user %>
