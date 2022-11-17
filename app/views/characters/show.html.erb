@@ -6,6 +6,7 @@
 <p>Description: <%= @character.description %></p>
 <p>Price: $<%= @character.price %></p>
 <p>Category: <%= @character.category %></p>
+<p>Location: <%= @character.address %></p>
 
 <% unless @character.user == current_user %>
   <%= simple_form_for([@character, @booking]) do |f| %>
