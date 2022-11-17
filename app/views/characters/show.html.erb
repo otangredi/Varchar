@@ -1,64 +1,45 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 col-lg-8">
-    <div class="card">
-      <% if @character.photos.size == 1 %>
-        <img class="d-block w-100" style="height: 300px;" src="<%= cl_image_tag @character.photos.first.key %>" alt="">
-      <% elsif @character.photos.size > 1 %>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner rounded my-3">
-          <% @character.photos.each_with_index do |photo, index| %>
-            <div class="carousel-item<%= " active" if index.zero? %>">
-              <img class="d-block w-100" style="height: 300px; cover: fit;" src="<%= cl_image_path photo.key %>" alt="">
-            </div>
-          <% end %>
-
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner rounded my-3">
+        <% @character.photos.each_with_index do |photo, index| %>
+          <div class="carousel-item<%= " active" if index.zero? %>">
+            <img class="d-block" src="<%= cl_image_path photo.key, :gravity=>"face", :height=>550, :width=>1200, :crop=>"fill" %>" alt="">
           </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
 
+    <div class="col-12 col-lg-8">
       <h1><%= @character.name %></h1><p>[<%= @character.category %>]</p>
       <p><%= @character.description %></p>
-      <p>$<%= @character.price %> / day</p>
+      <p><strong>$<%= @character.price %></strong> / day</p>
       <p>📍 <%= @character.address %></p>
-      </div>
-
     </div>
-  </div>
-  <%# unless @character.user == current_user %>
-      <div style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-marker-value="<%= @marker.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-        <%# <h2>Book this character</h2>
+
+  <% unless @character.user == current_user %>
+    <div class="col-12 col-lg-4">
+      <form class="border rounded p-3">
+        <%= simple_form_for([@character, @booking]) do |f| %>
         <div class="form-group">
-          <label for="">From</label>
-          <input type="date" name="start_date" class="form-control">
+          <%= f.input :start_date, class: "form-control", html5: true %>
         </div>
         <div class="form-group">
-          <label for="">Departure</label>
-          <input type="date" name="end_date" class="form-control">
+          <%= f.input :end_date, class: "form-control", html5: true %>
         </div>
-        <input type="submit" class="btn btn-primary w-100" value="Book now"> %>
-
-  <div class="col-12 col-lg-4">
-    <div class="border rounded p-3">
-      <%= simple_form_for([@character, @booking]) do |f| %>
-      <div class="form-group"><%= f.input :start_date, as: :date, class: "form-control" %></div>
-      <div class="form-group"><%= f.input :end_date, as: :date, class: "form-group" %></div>
-      <%= f.submit %>
-      <% end %>
+        <%= f.submit "Book now", class: "btn btn-primary w-100" %>
+        <% end %>
+      </form>
     </div>
-  </div>
+  <% end %>
 
   <div>
     <% if @character.user == current_user %>
@@ -72,4 +53,9 @@
     <% end %>
   </div>
 
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
