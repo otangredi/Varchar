@@ -2,6 +2,15 @@ class CharactersController < ApplicationController
   before_action :set_character, only: %i[show edit update destroy]
 
   def index
+    @characters = Character.all
+    @markers = @characters.geocoded.map do |character|
+      {
+        lat: character.latitude,
+        lng: character.longitude,
+        info_window: render_to_string(partial: 'info_window', locals: { character: character }),
+        image_url: helpers.asset_url("marker.png")
+      }
+      
     if params[:query].nil?
       @characters = Character.all
     else
@@ -56,6 +65,6 @@ class CharactersController < ApplicationController
   end
 
   def character_params
-    params.require(:character).permit(:name, :description, :price, :category, :user_id, photos: [])
+    params.require(:character).permit(:name, :description, :price, :category, :user_id, :address, photos: [])
   end
 end
