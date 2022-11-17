@@ -1,8 +1,8 @@
 <div class="container">
   <div class="text-center d-flex">
-  <% @character.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, class: "img-fluid rounded d-block", size: "16x10" %>
-  <% end %>
+    <% @character.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class: "img-fluid rounded d-block", size: "16x10" %>
+    <% end %>
   </div>
 
   <h1><%= @character.name %></h1>
@@ -29,5 +29,11 @@
     <% if @character.user == current_user %>
       <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
     <% end %>
+  </div>
+
+  <div style="width: 75%; height: 600px;"
+    data-controller="map"
+    data-map-marker-value="<%= @marker.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

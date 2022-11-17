@@ -3,14 +3,6 @@ class CharactersController < ApplicationController
 
   def index
     @characters = Character.all
-    @markers = @characters.geocoded.map do |character|
-      {
-        lat: character.latitude,
-        lng: character.longitude,
-        info_window: render_to_string(partial: 'info_window', locals: { character: character }),
-        image_url: helpers.asset_url("marker.png")
-      }
-    end
 
     if params[:query].nil?
       @characters = Character.all
@@ -21,6 +13,12 @@ class CharactersController < ApplicationController
 
   def show
     @booking = Booking.new
+    @marker = {
+        lat: @character.latitude,
+        lng: @character.longitude,
+        # info_window: render_to_string(partial: 'info_window', locals: { character: @character }),
+        image_url: helpers.asset_url("marker.png")
+      }
   end
 
   def new
