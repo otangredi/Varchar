@@ -1,4 +1,15 @@
 
+<%= form_with url: characters_path, method: :get, class: "d-flex my-1" do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find a character"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+
+
 <% @characters.each do |character| %>
   <div class="card-trip">
       <img src="<%= cl_image_path character.photos.all.first.nil? ? '' : character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">

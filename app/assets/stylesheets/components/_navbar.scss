@@ -1,9 +1,16 @@
 .navbar {
   justify-content: space-between;
   background: white;
-
 }
 
 .navbar img {
-  width: 120px;
+  width: 170px;
+}
+
+.navbar-toggler {
+  border:none;
+}
+
+span .navbar-toggler-icon {
+  color: yellow;
 }
