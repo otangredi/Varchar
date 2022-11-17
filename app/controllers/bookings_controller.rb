@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(params_booking)
     @booking.character = Character.find(params[:character_id])
     @booking.user = current_user
+    @booking.status = 0
 
     if @booking.save!
       redirect_to booking_path(@booking)
@@ -24,6 +25,10 @@ class BookingsController < ApplicationController
   end
 
   def set_status
+    @booking = Booking.find(params[:id])
+    @booking.status = params[:status].to_i
+    @booking.save!
+    redirect_to host_bookings_path, status: :see_other
   end
 
   def destroy
@@ -35,29 +40,8 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user: current_user)
   end
 
-  # def host_bookings
-  #   @host_bookings = []
-  #   characters = current_user.characters
-  #   characters.each do |character|
-  #     result = Booking.where(character_id: character.id)
-  #     @host_bookings << result if result != []
-  #   end
-  #   @host_bookings
-  # end
-
   def host_bookings
-    characters = current_user.characters
-    @host_bookings = characters.select do |character|
-      result = Booking.where(character_id: character.id)
-      if result != []
-        {
-          name: character.name,
-          descripton: character.description,
-          price: character.price,
-          bookings: result
-        }
-      end
-    end
+    @host_bookings = current_user.host_bookings
   end
 
   def host_booking
