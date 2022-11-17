@@ -10,6 +10,11 @@ class CharactersController < ApplicationController
         info_window: render_to_string(partial: 'info_window', locals: { character: character }),
         image_url: helpers.asset_url("marker.png")
       }
+      
+    if params[:query].nil?
+      @characters = Character.all
+    else
+      @characters = Character.search_by_name_and_description(params[:query])
     end
   end
 
@@ -36,8 +41,12 @@ class CharactersController < ApplicationController
   end
 
   def update
-    @character.update(character_params)
-    redirect_to character_path(@character)
+    # @character.photos.attach(params[:photos])
+    if @character.update(character_params)
+      redirect_to character_path(@character), notice: "Character was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
