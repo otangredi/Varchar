@@ -5,8 +5,8 @@ class Booking < ApplicationRecord
   validates :status, presence: true
 
   enum status: {
-    pending: 0,
-    active: 1,
-    canceled: 2
+    Pending: 0,
+    Confirmed: 1,
+    Denied: 2
   }, _prefix: true
 end
