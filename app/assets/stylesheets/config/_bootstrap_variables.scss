@@ -6,7 +6,7 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 white;
 $font-size-base: 1rem;
 
 // Colors
@@ -23,3 +23,16 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+
+@lg:  ~"(max-width:9000px)"; //Arbitrary to be huge
+@md:  ~"(max-width:1000px)";
+@sm:  ~"(max-width:800px)";
+@xsm:  ~"(max-width:500px)";
+
+//Variables
+@maxWidth: 1182px + 36px + 36px;
+
+@min-lg:  ~"(min-width:9000px)"; //Arbitrary to be huge
+@min-md:  ~"(min-width:1000px)";
+@min-sm:  ~"(min-width:800px)";
+@min-xsm:  ~"(min-width:500px)";
