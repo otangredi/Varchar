@@ -2,5 +2,21 @@
 @import "home";
 
 .search {
+  padding-bottom: 20px;
+}
 
+
+
+.card-overview {
+  max-width: 300px;
+}
+
+.card-overview small {
+  color: var(--sl-color-neutral-500);
+}
+
+.card-overview [slot='footer'] {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
