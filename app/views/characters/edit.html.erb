@@ -1,11 +1,27 @@
-<h1>Edit Character</h1>
-
-<%= simple_form_for([@character]) do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :price %>
-<%= f.input :category, collection: %w[Animation Animal Christmas Comedy Game Horror Superhero Princess Other] %>
-<%= f.input :address %>
-<%# <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-<%= f.submit %>
-<% end %>
+<div class="container pt-5" style="width: 900px;">
+  <div class="border rounded p-3">
+  <%= simple_form_for @character do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, "Name", class: "form-label" %>
+      <%= f.input :name, label: false, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :description, "Description", class: "form-label" %>
+      <%= f.input :description, label: false, class: "form-control", as: :text %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :description, "Price", class: "form-label" %>
+      <%= f.input :price, label: false, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :category, "Select a category", class: "form-label" %>
+      <%= f.input :category, collection: %w[Animation Animal Christmas Comedy Game Horror Superhero Princess Other], class: "form-select", html5: true, label: false %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :address, "Address", class: "form-label" %>
+      <%= f.input :address, label: false, class: "form-control" %>
+    </div>
+    <%#= f.input :photos, as: :file, input_html: { multiple: true }, class: "form-control" %>
+    <%= f.submit "Edit", class: "btn btn-primary w-100 py-2" %>
+  <% end %>
+</div>
