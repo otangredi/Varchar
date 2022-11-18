@@ -17,11 +17,9 @@
           alt=""
         />
         <h2><%= link_to character.name, character_path(character) %></h2>
-        <p><%= character.description %></p>
 
         <div slot="footer">
           <%= link_to "Book me!", character_path(character), class: "sl-button pill warning" %>
-          <%# <sl-button variant="warning" pill href="<% character_path(character) %>
           <h5 class="card-trip-pricing">$<%= character.price %>/day</h5>
         </div>
       </sl-card>

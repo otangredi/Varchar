@@ -37,10 +37,12 @@ class CharactersController < ApplicationController
   end
 
   def edit
+    @character.photos.attach(params[:photos])
+    @character.save
   end
 
   def update
-    # @character.photos.attach(params[:photos])
+    # raise
     if @character.update(character_params)
       redirect_to character_path(@character), notice: "Character was successfully updated."
     else
