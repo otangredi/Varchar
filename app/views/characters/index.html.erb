@@ -16,10 +16,10 @@
           src="<%= cl_image_path character.photos.all.first.nil? ? '' : character.photos.all.first.key, height: 300, width: 350, crop: :fill %>"
           alt=""
         />
-        <h2><%= link_to character.name, character_path(character) %></h2>
+        <h2><%= link_to character.name, character_path(character), class: "index-link" %></h2>
 
         <div slot="footer">
-          <%= link_to "Book me!", character_path(character), class: "sl-button pill warning" %>
+          <%= link_to "Book me!", character_path(character), class: "sl-button pill warning", id: "book-me" %>
           <h5 class="card-trip-pricing">$<%= character.price %>/day</h5>
         </div>
       </sl-card>

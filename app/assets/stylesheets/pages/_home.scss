@@ -87,4 +87,27 @@
 
 #btn-confirm {
   padding-left: 0px;
+  color: inherit;
+  a:hover{
+    color: inherit;
+  }
+  &:hover{
+    background-color: yellow;
+  }
+}
+
+#btn-deny {
+  color: inherit;
+  a:hover{
+    color: inherit;
+  }
+  &:hover{
+    background-color: yellow;
+  }
+}
+
+#book-me{
+  &:hover{
+    color: lightgrey;
+  }
 }
