@@ -6,7 +6,8 @@
       <div class="card-product">
         <img src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top img-fluid" alt="...">
         <div class="card-product-infos">
-          <h2><%= link_to booking.character.name, edit_booking_path(booking) %> (<%= booking.start_date %>-<%= booking.end_date %>)</h2>
+          <h2><%= link_to booking.character.name, edit_booking_path(booking) %></h2>
+          <p><%= booking.start_date.strftime("%b.%d") %> - <%= booking.end_date.strftime("%b.%d") %></p>
           <p>This booking is <strong><%= booking.status %></strong></p>
         </div>
       </div>

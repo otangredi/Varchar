@@ -11,8 +11,8 @@
           <img id="img-card-host" src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
           <div class="card-product-infos pb-2">
             <h2><%= booking.character.name %></h2>
-            <p>(<%= booking.start_date %> - <%= booking.end_date %>)</p>
-            <p>Price: <%= booking.character.price %> $</p>
+            <p><%= booking.start_date.strftime("%b.%d") %> - <%= booking.end_date.strftime("%b.%d") %></p>
+            <p>Price: <%= booking.character.price %>$</p>
             <p>Status: <strong><%= booking.status %></strong></p>
             <div class="status d-flex align-items-start">
                 <button id="btn-confirm" class="btn"><%= link_to "Confirm", edit_status_path(booking, 1), data: { 'turbo-method': :patch }%></button>
