@@ -1,25 +1,29 @@
-<h1>Manage Bookings</h1>
 
-<% @host_bookings.each do |booking| %>
-  <div class="container">
-    <div class="card-product d-flex justify-content-between">
-      <img src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
-      <div class="card-product-infos">
-        <h2><%= booking.character.name %></h2>
-        <p>Dates: <%= booking.start_date %> to <%= booking.end_date %></p>
-        <p>Total: <%= booking.character.price %>$</p>
-        <p>Status: <%= booking.status %></p>
-      </div>
-      <div class="card-product flex-column align-items-start w-25">
-          <div class="status">
-            <% if booking.status != "Confirmed" %>
-            <button class="btn btn-outline-success"><%= link_to "Confirm", edit_status_path(booking, 1), data: { 'turbo-method': :patch }%></p>
-            <button class="btn btn-outline-danger"><%= link_to "Deny", edit_status_path(booking, 2), data: { 'turbo-method': :patch }%></p>
-            <% end %>
+
+
+<div class="container">
+  <h1>Manage Bookings</h1>
+
+  <div class="cards">
+    <% @host_bookings.each do |booking| %>
+      <div class="card-product" style="height: 200px; display: inline-block;">
+        <div class="d-flex justify-content-around">
+          <img id="img-card-host" src="<%= cl_image_path booking.character.photos.all.first.nil? ? '' : booking.character.photos.all.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
+          <div class="card-product-infos pb-2">
+            <h2><%= booking.character.name %></h2>
+            <p>(<%= booking.start_date %> - <%= booking.end_date %>)</p>
+            <p>Price: <%= booking.character.price %> $</p>
+            <p>Status: <strong><%= booking.status %></strong></p>
+            <div class="status d-flex align-items-start">
+                <button id="btn-confirm" class="btn"><%= link_to "Confirm", edit_status_path(booking, 1), data: { 'turbo-method': :patch }%></button>
+                <button class="btn"><%= link_to "Deny", edit_status_path(booking, 2), data: { 'turbo-method': :patch }%></button>
+            </div>
           </div>
-          <p class="status">Booked by <%= booking.user.email %></p>
+        </div>
+        <div class="">
+          <p class="booked-status">Booked by: <%= booking.user.email %></p>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>

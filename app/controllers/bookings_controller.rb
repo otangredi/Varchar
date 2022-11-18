@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.status = params[:status].to_i
     @booking.save!
-    redirect_to host_bookings_path, status: :see_other
+    redirect_back_or_to '/', allow_other_host: false
   end
 
   def destroy

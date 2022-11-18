@@ -12,9 +12,8 @@
   left: 0;
   z-index: 1;
   animation-name : fade ;
-  animation-delay : 8s ;
+  animation-delay : 2s ;
   animation-duration : 4s ;
-  animation-iteration-count : infinite ;
 }
 #home-page-banner-goute {
   width: 40%;
@@ -23,7 +22,7 @@
   left: 0;
   z-index: 1;
   animation-name : fade ;
-  animation-delay : 8s ;
+  animation-delay : 2s ;
   animation-duration : 4s ;
   animation-iteration-count : infinite ;
 }
@@ -34,9 +33,8 @@
   left: 0;
   z-index: 1;
   animation-name : fade ;
-  animation-delay : 8s ;
+  animation-delay : 2s ;
   animation-duration : 4s ;
-  animation-iteration-count : infinite ;
 }
 #home-page-banner-deco {
   width: 40%;
@@ -45,9 +43,8 @@
   left: 0;
   z-index: 1;
   animation-name : fade ;
-  animation-delay : 8s ;
+  animation-delay : 2s ;
   animation-duration : 4s ;
-  animation-iteration-count : infinite ;
 }
 
 
@@ -87,3 +84,7 @@
   opacity : 1 ;
   }
   }
+
+#btn-confirm {
+  padding-left: 0px;
+}
