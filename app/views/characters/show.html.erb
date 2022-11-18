@@ -1,10 +1,16 @@
 <div class="container">
+  <div class="m-0 d-flex align-items-center justify-content-between">
+    <h1 class="align-self-end"><strong><%= @character.name %></strong></h1>
+    <h4 class="align-self-end"><strong>$<%= @character.price %></strong> / day</h4>
+  </div>
+    <%= icon('fa-solid', 'location-dot')%> <%= @character.address %>
+
   <div class="row">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner rounded my-3">
         <% @character.photos.each_with_index do |photo, index| %>
           <div class="carousel-item<%= " active" if index.zero? %>">
-            <img class="d-block" src="<%= cl_image_path photo.key, :gravity=>"face", :height=>550, :width=>1200, :crop=>"fill" %>" alt="">
+            <img class="d-block" src="<%= cl_image_path photo.key, :gravity=>"face", :height=>400, :width=>1200, :crop=>"fill" %>" alt="">
           </div>
         <% end %>
       </div>
@@ -19,43 +25,46 @@
     </div>
 
     <div class="col-12 col-lg-8">
-      <h1><%= @character.name %></h1><p>[<%= @character.category %>]</p>
-      <p><%= @character.description %></p>
-      <p><strong>$<%= @character.price %></strong> / day</p>
-      <p>📍 <%= @character.address %></p>
+      <div class="rounded p-3" style="height: 300px;">
+        <span class="badge text-bg-warning"><%= @character.category %></span>
+        <h3 class="py-3"><%= @character.description %></h3>
+      </div>
     </div>
 
   <% unless @character.user == current_user %>
-    <div class="col-12 col-lg-4">
-      <div class="border rounded p-3">
+    <div class="col-12 col-lg-4 mb-3">
+      <div class="border rounded p-3" style="height: 300px;">
         <%= simple_form_for([@character, @booking]) do |f| %>
-        <div class="form-group">
-          <%= f.input :start_date, class: "form-control", html5: true %>
+        <div class="form-group py-3">
+          <%= f.label :start_date, "From" %>
+          <%= f.input :start_date, class: "form-control", html5: true, label: false %>
         </div>
-        <div class="form-group">
-          <%= f.input :end_date, class: "form-control", html5: true %>
+        <div class="form-group pb-4">
+          <%= f.label :end_date, "To" %>
+          <%= f.input :end_date, class: "form-control", html5: true, label: false %>
         </div>
-        <%= f.submit "Book now", class: "btn btn-primary w-100" %>
+        <%= f.submit "Book now", class: "btn btn-primary w-100 py-2" %>
         <% end %>
       </div>
     </div>
   <% end %>
 
-  <div>
-    <% if @character.user == current_user %>
-      <%= link_to 'Edit', edit_character_path(@character) %>
-    <% end %>
-  </div>
+  <% if @character.user == current_user %>
+    <div class="col-12 col-lg-4 mb-3">
+      <div class="rounded p-3" style="height: 300px;">
+          <%= link_to 'Edit', edit_character_path(@character), class: "btn btn-primary w-100 mb-3" %>
+          <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: "btn btn-primary w-100" %>
+      </div>
+    </div>
+  <% end %>
 
-  <div>
-    <% if @character.user == current_user %>
-      <%= link_to 'Delete', delete_character_path(@character), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
-    <% end %>
-  </div>
 
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-marker-value="<%= @marker.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div class="col-12">
+    <div class="border rounded"
+      style="width: 100%; height: 400px;"
+      data-controller="map"
+      data-map-marker-value="<%= @marker.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>
