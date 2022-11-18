@@ -15,8 +15,26 @@
   align-items: center;
 }
 
-.cards {
-  h2 a {
-    background-color: yellow;
+//.cards {
+// h2 a {
+// background-color: yellow;
+//  }
+//}
+
+.index-link {
+  color: inherit;
+  background-color: yellow;
+  &:hover{
+    color: lightgrey;
   }
+}
+
+.my-character {
+  color: White;
+  &:hover{
+    color: yellow;
+  }
+}
+.host-link{
+  background-color: yellow;
 }
